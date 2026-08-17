@@ -2,6 +2,11 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "refugee-work-rights",
   "compatibility_date": "2026-08-01",
+  // wrangler runs this before every deploy — locally and in Workers Builds CI —
+  // so `wrangler deploy` alone produces a fresh dist/ (astro build + pagefind).
+  "build": {
+    "command": "npm run build"
+  },
   // Pure static-assets Worker — no script. Wrangler uploads dist/ and serves it.
   "assets": {
     "directory": "./dist",

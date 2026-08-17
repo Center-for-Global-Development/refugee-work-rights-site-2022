@@ -8,7 +8,7 @@
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "extract": "node scripts/extract-pages.mjs && node scripts/extract-scorecards.mjs && node scripts/extract-map.mjs && node scripts/copy-media.mjs",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.0",

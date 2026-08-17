@@ -29,14 +29,15 @@ npm run preview   # serve dist/ locally
 node scripts/parity.mjs   # screenshot-diff every route against the live site
 ```
 
-## Deploying (Cloudflare Workers, static assets)
+## Deploying (Cloudflare Workers, git-connected)
 
-```sh
-npx wrangler login   # once
-npm run deploy       # astro build + pagefind, then wrangler deploy
-```
+The repo is self-contained — all content/data/media are committed snapshots, so Cloudflare builds everything from a clean checkout with no local step.
 
-`wrangler.jsonc` defines a script-less static-assets Worker: `dist/` is uploaded as-is, `html_handling: auto-trailing-slash` matches Astro's directory-format URLs (`/about` → `/about/`), and unknown routes serve Astro's `404.html`. `public/_headers` (copied into `dist/`) sets caching. No domain configuration is needed — every internal link is root-relative, so the site works unchanged on the `*.workers.dev` URL and later on the real domain. The only absolute self-references are the per-page `<link rel="canonical">` tags and the gtag linker config, which intentionally point at `refugeeworkrights.org`.
+**One-time setup** in the Cloudflare dashboard: Workers & Pages → Create → Workers → *Import a repository* → select this repo. Cloudflare reads `wrangler.jsonc`; leave the deploy command as `npx wrangler deploy`. Because `wrangler.jsonc` declares `build.command: "npm run build"`, wrangler itself runs the Astro build + Pagefind indexing before uploading `dist/` — no separate build command needed. Every push to `main` then deploys automatically (and PRs get preview URLs).
+
+`wrangler.jsonc` defines a script-less static-assets Worker: `dist/` is uploaded as-is, `html_handling: auto-trailing-slash` matches Astro's directory-format URLs (`/about` → `/about/`), and unknown routes serve Astro's `404.html`. `public/_headers` (copied into `dist/`) sets caching. Manual deploys still work with `npx wrangler login` + `npm run deploy`.
+
+No domain configuration is needed — every internal link is root-relative, so the site works unchanged on the `*.workers.dev` URL and later on the real domain. The only absolute self-references are the per-page `<link rel="canonical">` tags and the gtag linker config, which intentionally point at `refugeeworkrights.org`.
 
 ## Deliberate differences from the live site
 
