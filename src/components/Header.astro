@@ -1,0 +1,62 @@
+---
+// Mirrors templates/header.php as rendered live, including WP's menu item
+// ids/classes so the vendored CSS applies identically.
+interface Props {
+  currentPath: string;
+}
+const { currentPath } = Astro.props;
+
+const ITEMS = [
+  { id: 1334, pageId: 5, path: '/', label: 'Home', extra: 'menu-item-home' },
+  { id: 1329, pageId: 76, path: '/scorecard/', label: 'Scorecard &amp; Map' },
+  { id: 1330, pageId: 8, path: '/about/', label: 'About the Initiative' },
+  { id: 1332, pageId: 13, path: '/learn-about-refugee-work-rights/', label: 'Refugee Work Rights' },
+  { id: 1333, pageId: 30, path: '/contact-us/', label: 'Contact Us' },
+];
+
+const itemClass = (item) => {
+  const cls = ['menu-item', 'menu-item-type-post_type', 'menu-item-object-page'];
+  if (item.extra) cls.push(item.extra);
+  if (item.path === currentPath) {
+    cls.push('current-menu-item', 'page_item', `page-item-${item.pageId}`, 'current_page_item');
+  }
+  cls.push(`menu-item-${item.id}`);
+  return cls.join(' ');
+};
+---
+
+<header id="banner" class="brand">
+  <div class="brand-bar">
+    <div class="brand-bar-logo">
+      <a href="/" class="brand-logo">
+        <img src="/assets/theme/campaign-logo.svg" alt="Refugee Work Rights" />
+      </a>
+    </div>
+    <nav class="nav main-nav">
+      <ul id="menu-main" class="menu main-nav-menu">
+        {
+          ITEMS.map((item) => (
+            <li id={`menu-item-${item.id}`} class={itemClass(item)}>
+              <a
+                href={item.path}
+                aria-current={item.path === currentPath ? 'page' : undefined}
+                set:html={item.label}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <button class="brand-btn brand-icon-bar-item" data-search-toggle>
+      <i class="icon icon-search"></i>
+      <span class="icon menu-icon-border"><i class="menu-icon"></i></span>
+    </button>
+  </div>
+  <div class="sub-header">
+    <div class="asylum-access-logo">
+      <a href="http://asylumaccess.org"
+        ><img alt="An Initiative of Asylum Access" src="/assets/theme/asylum-access-initiative.svg" /></a
+      >
+    </div>
+  </div>
+</header>

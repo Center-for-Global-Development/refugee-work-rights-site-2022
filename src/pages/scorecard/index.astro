@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import ScorecardShell from '../../components/ScorecardShell.astro';
+import page from '../../content/pages/scorecard.json';
+---
+
+<Base
+  title={page.title}
+  bodyClass={page.bodyClass}
+  path={page.path}
+  blockSupportsCss={page.blockSupportsCss}
+>
+  <ScorecardShell />
+</Base>

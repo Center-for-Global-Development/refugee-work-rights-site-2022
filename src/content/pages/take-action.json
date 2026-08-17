@@ -1,0 +1,8 @@
+{
+  "slug": "take-action",
+  "path": "/take-action/",
+  "title": "Take Action – Refugee Work Rights",
+  "bodyClass": "wp-singular page-template-default page page-id-15 wp-theme-rwrap take-action sidebar-primary elementor-default elementor-kit-431",
+  "blockSupportsCss": "",
+  "main": "<div class=\"page-header\">\n  <h1>Take Action</h1>\n  </div>\n  \n      <div class=\"layout\">\n    \n<div class=\"header-with-text box-default\">\n  <section>\n      <header>\n      <h2>Take Action</h2>\n    </header>\n          <div class=\"content\">\n        <p>Placeholder for content re: refugee rights toolkit.</p>\n      </div>\n      </section>\n</div>\n  </div>"
+}

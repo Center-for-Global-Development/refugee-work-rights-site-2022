@@ -1,0 +1,22 @@
+---
+// The scorecard page body shared by /scorecard/ and /scorecard/[slug]/:
+// scorecard-header (h1 + nav island) + the page's static intro content +
+// the SPA island where <router-view> used to be.
+import ScorecardNav from '../scorecard/ScorecardNav';
+import ScorecardApp from '../scorecard/ScorecardApp';
+import page from '../content/pages/scorecard.json';
+
+// Everything between the server-rendered scorecard-header and <router-view>.
+const afterNav = page.main.slice(page.main.indexOf('</scorecard-nav>'));
+const content = afterNav
+  .slice(afterNav.indexOf('</div>') + '</div>'.length)
+  .replace(/<router-view><\/router-view>\s*$/, '')
+  .trim();
+---
+
+<div class="scorecard-header">
+  <h1>The Global Refugee Work Rights Scorecard</h1>
+  <ScorecardNav client:only="react" />
+</div>
+<Fragment set:html={content} />
+<ScorecardApp client:only="react" />

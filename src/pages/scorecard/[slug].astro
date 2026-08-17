@@ -1,0 +1,29 @@
+---
+// Pre-rendered deep links for all 58 country scorecards. The shell matches
+// the WP single-scorecard behavior (same page body as /scorecard/; the SPA
+// picks the country up from the URL), while title and body class reproduce
+// what WP emitted for single scorecard posts.
+import Base from '../../layouts/Base.astro';
+import ScorecardShell from '../../components/ScorecardShell.astro';
+import page from '../../content/pages/scorecard.json';
+import scorecards from '../../data/scorecards.json';
+
+export async function getStaticPaths() {
+  return scorecards.map((card) => ({
+    params: { slug: card.slug },
+    props: { card },
+  }));
+}
+
+const { card } = Astro.props;
+const bodyClass = `wp-singular scorecard-template-default single single-scorecard postid-${card.id} wp-theme-rwrap ${card.slug} sidebar-primary elementor-default elementor-kit-431`;
+---
+
+<Base
+  title={`${card.title} – Refugee Work Rights`}
+  bodyClass={bodyClass}
+  path={`/scorecard/${card.slug}/`}
+  blockSupportsCss={page.blockSupportsCss}
+>
+  <ScorecardShell />
+</Base>

@@ -1,0 +1,27 @@
+---
+// All regular WP pages, rendered from the scraped live HTML snapshots.
+// The scorecard page has its own route (src/pages/scorecard/).
+import Base from '../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const modules = import.meta.glob('../content/pages/*.json', { eager: true });
+  return Object.values(modules)
+    .map((m: any) => m.default ?? m)
+    .filter((page: any) => page.slug !== 'scorecard')
+    .map((page: any) => ({
+      params: { slug: page.path === '/' ? undefined : page.path.replace(/^\/|\/$/g, '') },
+      props: { page },
+    }));
+}
+
+const { page } = Astro.props;
+---
+
+<Base
+  title={page.title}
+  bodyClass={page.bodyClass}
+  path={page.path}
+  blockSupportsCss={page.blockSupportsCss}
+>
+  <Fragment set:html={page.main} />
+</Base>

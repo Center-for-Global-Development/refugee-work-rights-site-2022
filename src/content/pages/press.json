@@ -1,0 +1,8 @@
+{
+  "slug": "press",
+  "path": "/press/",
+  "title": "Press – Refugee Work Rights",
+  "bodyClass": "wp-singular page-template-default page page-id-28 wp-theme-rwrap press sidebar-primary elementor-default elementor-kit-431",
+  "blockSupportsCss": "",
+  "main": "<div class=\"page-header\">\n  <h1>Press</h1>\n  </div>"
+}

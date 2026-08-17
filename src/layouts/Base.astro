@@ -1,0 +1,66 @@
+---
+// Reproduces the WP shell: base.php + templates/head.php + header/footer.
+// CSS import order mirrors the live site's cascade:
+// wp inline (pre) → block-library → wp inline (post) → theme CSS → wp custom CSS → our overrides.
+import '../styles/wp-inline-pre.css';
+import '../styles/wp-block-library.css';
+import '../styles/wp-inline-post.css';
+import '../styles/legacy.css';
+import '../styles/wp-custom.css';
+import '../styles/overrides.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SearchModal from '../components/SearchModal.astro';
+
+interface Props {
+  title: string;
+  bodyClass: string;
+  path: string;
+  blockSupportsCss?: string;
+}
+const { title, bodyClass, path, blockSupportsCss } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {/* The live site is set to discourage search engines; kept as-is. Remove for launch if indexing is wanted. */}
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700" media="all" />
+    <link rel="canonical" href={new URL(path, Astro.site).href} />
+    <link rel="icon" href="/wp-content/uploads/2022/07/cropped-Fav-WR-1-32x32.png" sizes="32x32" />
+    <link rel="icon" href="/wp-content/uploads/2022/07/cropped-Fav-WR-1-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/wp-content/uploads/2022/07/cropped-Fav-WR-1-180x180.png" />
+    <meta name="msapplication-TileImage" content="/wp-content/uploads/2022/07/cropped-Fav-WR-1-270x270.png" />
+    {/* Google tag (gtag.js) — carried over from Site Kit on the live site */}
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=GT-PJN8PSGF"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('set', 'linker', { domains: ['refugeeworkrights.org'] });
+      gtag('js', new Date());
+      gtag('config', 'GT-PJN8PSGF');
+    </script>
+  </head>
+  <body class={bodyClass}>
+    <div id="app">
+      <Header currentPath={path} />
+      <div class="wrap" role="document">
+        <main class="main">
+          <slot />
+        </main>
+        <!-- /.main -->
+      </div>
+      <!-- /.wrap -->
+      <Footer />
+      <SearchModal />
+    </div>
+    {blockSupportsCss && <style set:html={blockSupportsCss} />}
+  </body>
+</html>

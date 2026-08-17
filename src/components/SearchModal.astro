@@ -1,0 +1,154 @@
+---
+// Static replacement for the Vue search-area/modal pair. The overlay markup
+// matches the Vue components' rendered output; the footer sitemap "clone"
+// (originally done client-side by the v-add-menu directive) is server-rendered.
+// The search input is backed by Pagefind (build-time index) instead of WP search.
+---
+
+<div class="search-modal-root" data-search-modal hidden>
+  <div class="modal-mask">
+    <div class="modal-wrapper">
+      <div class="modal-bar">
+        <button class="modal-close" data-search-close><i class="icon icon-cancel"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="search-area">
+          <div>
+            <form id="searchform" role="search" method="get" action="/">
+              <div class="input-container">
+                <label class="search-label" for="s">Search</label>
+                <input type="search" class="form-input" value="" name="s" id="s" autocomplete="off" />
+                <input type="submit" class="search-submit" id="searchsubmit" value="Search" />
+              </div>
+            </form>
+            <ul class="search-results" data-search-results hidden></ul>
+          </div>
+          <div>
+            <div id="search-area-sitemap" class="search-area-nav">
+              <section class="widget nav-footer nav_menu-7 widget_nav_menu">
+                <h3 class="nav-footer-heading">Scorecard</h3>
+                <div class="menu-index-container">
+                  <ul class="menu">
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                      <a href="/scorecard/">The Global Refugee Work Rights Scorecard</a>
+                    </li>
+                  </ul>
+                </div>
+              </section><section class="widget nav-footer nav_menu-10 widget_nav_menu">
+                <h3 class="nav-footer-heading">About</h3>
+              </section><section class="widget nav-footer nav_menu-3 widget_nav_menu">
+                <h3 class="nav-footer-heading">Learn More</h3>
+                <div class="menu-refugee-work-rights-container">
+                  <ul class="menu">
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                      <a href="/learn-about-refugee-work-rights/">About Refugee Work Rights</a>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                      <a href="/learn-about-refugee-work-rights/legal-foundations/">Legal Foundations</a>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                      <a href="/learn-about-refugee-work-rights/key-research/">Key Research</a>
+                    </li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const root = document.querySelector('[data-search-modal]') as HTMLElement;
+  const mask = root.querySelector('.modal-mask') as HTMLElement;
+  const input = root.querySelector('#s') as HTMLInputElement;
+  const results = root.querySelector('[data-search-results]') as HTMLElement;
+
+  function open() {
+    root.hidden = false;
+    document.body.classList.add('modal-open');
+    // Replicate the Vue <transition name="modal"> enter animation
+    mask.classList.add('modal-enter');
+    requestAnimationFrame(() => requestAnimationFrame(() => mask.classList.remove('modal-enter')));
+    input.focus();
+  }
+
+  function close() {
+    mask.classList.add('modal-leave-active');
+    setTimeout(() => {
+      mask.classList.remove('modal-leave-active');
+      root.hidden = true;
+      document.body.classList.remove('modal-open');
+    }, 300);
+  }
+
+  document.querySelectorAll('[data-search-toggle]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      open();
+    });
+  });
+  root.querySelector('[data-search-close]')!.addEventListener('click', (e) => {
+    e.preventDefault();
+    close();
+  });
+  document.addEventListener('keyup', (e) => {
+    if (e.key === 'Escape' && !root.hidden) close();
+  });
+
+  // Floating-label behavior (originally the v-input-container Vue directive),
+  // applied to every .input-container on the page (incl. the 404 search form).
+  document.querySelectorAll('.input-container').forEach((el) => {
+    const field = el.querySelector('input[type="search"], input[type="text"]') as HTMLInputElement | null;
+    if (!field) return;
+    const sync = () => {
+      el.classList.toggle('input-container__has_value', field.value.length > 0);
+    };
+    field.addEventListener('focus', () => el.classList.add('input-container__focused'));
+    field.addEventListener('blur', () => el.classList.remove('input-container__focused'));
+    field.addEventListener('keyup', sync);
+    sync();
+  });
+
+  // Pagefind-backed live results inside the modal.
+  let pagefind: any = null;
+  async function search(term: string) {
+    if (!term) {
+      results.hidden = true;
+      results.innerHTML = '';
+      return;
+    }
+    if (!pagefind) {
+      // Generated at build time by `pagefind --site dist`; resolved at runtime
+      // only (absent under `astro dev` — search silently no-ops there).
+      try {
+        const url = '/pagefind/pagefind.js';
+        pagefind = await import(/* @vite-ignore */ url);
+        await pagefind.init();
+      } catch {
+        pagefind = null;
+        return;
+      }
+    }
+    const res = await pagefind.search(term);
+    const items = await Promise.all(res.results.slice(0, 8).map((r: any) => r.data()));
+    results.innerHTML = items
+      .map(
+        (item: any) =>
+          `<li class="search-result"><a href="${item.url}"><h3>${item.meta.title ?? item.url}</h3></a><p>${item.excerpt}</p></li>`,
+      )
+      .join('');
+    results.hidden = items.length === 0;
+  }
+  let debounce: ReturnType<typeof setTimeout>;
+  input.addEventListener('input', () => {
+    clearTimeout(debounce);
+    debounce = setTimeout(() => search(input.value.trim()), 150);
+  });
+  input.form!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    search(input.value.trim());
+  });
+</script>

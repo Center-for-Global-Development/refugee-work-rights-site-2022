@@ -1,0 +1,24 @@
+---
+// Reproduces 404.php as rendered live.
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Page not found – Refugee Work Rights"
+  bodyClass="error404 wp-theme-rwrap elementor-default elementor-kit-431"
+  path="/404/"
+>
+  <div class="page-header">
+    <h1>Not Found</h1>
+  </div>
+
+  <div class="alert alert-warning">Sorry, but the page you were trying to view does not exist.</div>
+
+  <form id="searchform" role="search" method="get" action="/">
+    <div class="input-container">
+      <label class="search-label" for="s">Search</label>
+      <input type="search" class="form-input" value="" name="s" id="s" />
+      <input type="submit" class="search-submit" id="searchsubmit" value="Search" />
+    </div>
+  </form>
+</Base>
