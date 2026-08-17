@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
-    "extract": "node scripts/extract-pages.mjs && node scripts/extract-scorecards.mjs && node scripts/extract-map.mjs && node scripts/copy-media.mjs"
+    "extract": "node scripts/extract-pages.mjs && node scripts/extract-scorecards.mjs && node scripts/extract-map.mjs && node scripts/copy-media.mjs",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.0",
@@ -19,8 +20,8 @@
   },
   "devDependencies": {
     "cheerio": "^1.0.0",
-    "embla-carousel": "^8.5.2",
     "pagefind": "^1.3.0",
-    "svg-path-bounds": "^1.0.2"
+    "svg-path-bounds": "^1.0.2",
+    "wrangler": "^4.123.0"
   }
 }

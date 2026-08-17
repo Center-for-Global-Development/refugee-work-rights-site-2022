@@ -29,9 +29,14 @@ npm run preview   # serve dist/ locally
 node scripts/parity.mjs   # screenshot-diff every route against the live site
 ```
 
-## Deploying (Cloudflare Pages)
+## Deploying (Cloudflare Workers, static assets)
 
-Build command `npm run build`, output directory `dist`. `public/_headers` sets caching. Trailing-slash redirects are automatic for directory-format output.
+```sh
+npx wrangler login   # once
+npm run deploy       # astro build + pagefind, then wrangler deploy
+```
+
+`wrangler.jsonc` defines a script-less static-assets Worker: `dist/` is uploaded as-is, `html_handling: auto-trailing-slash` matches Astro's directory-format URLs (`/about` → `/about/`), and unknown routes serve Astro's `404.html`. `public/_headers` (copied into `dist/`) sets caching. No domain configuration is needed — every internal link is root-relative, so the site works unchanged on the `*.workers.dev` URL and later on the real domain. The only absolute self-references are the per-page `<link rel="canonical">` tags and the gtag linker config, which intentionally point at `refugeeworkrights.org`.
 
 ## Deliberate differences from the live site
 
