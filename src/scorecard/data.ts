@@ -1,8 +1,10 @@
-// Build-time data (extracted from the WP REST API + theme map file) plus the
-// presentation constants that lived in the Vue store (store.js).
-import rawScorecards from '../data/scorecards.json';
-import keysJson from '../data/keys.json';
-import footnotesJson from '../data/footnotes.json';
+// Build-time data — one editable YAML file per country in src/data/scorecards/
+// (the filename is the country's URL slug) — plus the presentation constants
+// that lived in the Vue store (store.js). This module is bundled into the
+// client island, so the per-country files are inlined at build time via
+// import.meta.glob; no runtime fetch.
+import keysJson from '../data/keys.yaml';
+import footnotesJson from '../data/footnotes.yaml';
 import mapJson from '../data/world-map.json';
 
 export interface Levels {
@@ -11,6 +13,7 @@ export interface Levels {
 }
 
 export interface ScorecardCard {
+  id: number;
   country_id: string;
   title: string;
   content: string;
@@ -43,15 +46,45 @@ export const CARD_MAP_FILL = '#f4f3f0'; // jqvmap default fill used by the card 
 
 export const CARD_TITLES: Record<keyof Levels, string> = { de_jure: 'De Jure', de_facto: 'De Facto' };
 
-export const scorecards: ScorecardCard[] = rawScorecards.map((s) => ({
-  country_id: s.country_id,
-  title: s.title,
-  content: s.content,
-  levels: { de_jure: s.levels.de_jure, de_facto: s.levels.de_facto },
-  overall: s.levels.overall,
-  survey_data: s.survey_data || '',
-  slug: s.slug,
-}));
+const scorecardModules = import.meta.glob('../data/scorecards/*.yaml', { eager: true }) as Record<
+  string,
+  { default: any }
+>;
+
+function checkCard(slug: string, s: any): void {
+  const bad = (msg: string) => {
+    throw new Error(`src/data/scorecards/${slug}.yaml: ${msg}`);
+  };
+  if (typeof s.id !== 'number') bad('missing numeric "id"');
+  if (typeof s.title !== 'string' || !s.title) bad('missing "title"');
+  if (typeof s.country_id !== 'string' || !/^[A-Za-z]{2}$/.test(s.country_id))
+    bad('"country_id" must be a 2-letter country code');
+  for (const key of ['de_jure', 'de_facto', 'overall']) {
+    const v = s.levels?.[key];
+    if (typeof v !== 'string' || !/^[0-5]$/.test(v))
+      bad(`levels.${key} must be a quoted score "0"–"5" (got ${JSON.stringify(v)})`);
+  }
+  if (typeof s.content !== 'string') bad('missing "content"');
+}
+
+// Sorted by filename (= slug), which matches the original list/display order.
+export const scorecards: ScorecardCard[] = Object.entries(scorecardModules)
+  .map(([file, mod]) => {
+    const slug = file.replace(/^.*\//, '').replace(/\.yaml$/, '');
+    const s = mod.default;
+    checkCard(slug, s);
+    return {
+      id: s.id,
+      country_id: s.country_id,
+      title: s.title,
+      content: s.content,
+      levels: { de_jure: s.levels.de_jure, de_facto: s.levels.de_facto },
+      overall: s.levels.overall,
+      survey_data: s.survey_data || '',
+      slug,
+    };
+  })
+  .sort((a, b) => (a.slug < b.slug ? -1 : 1));
 
 export const scorecardsBySlug: Record<string, ScorecardCard> = Object.fromEntries(
   scorecards.map((c) => [c.slug, c]),

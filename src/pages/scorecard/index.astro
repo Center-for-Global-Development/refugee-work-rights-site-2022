@@ -1,7 +1,9 @@
 ---
+import { getEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import ScorecardShell from '../../components/ScorecardShell.astro';
-import page from '../../content/pages/scorecard.json';
+
+const { data: page } = (await getEntry('pages', 'scorecard'))!;
 ---
 
 <Base

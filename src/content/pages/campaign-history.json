@@ -1,8 +1,0 @@
-{
-  "slug": "campaign-history",
-  "path": "/about/campaign-history/",
-  "title": "Campaign History – Refugee Work Rights",
-  "bodyClass": "wp-singular page-template-default page page-id-222 page-child parent-pageid-8 wp-theme-rwrap campaign-history sidebar-primary elementor-default elementor-kit-431",
-  "blockSupportsCss": "",
-  "main": "<div class=\"page-header\">\n  <h1>Campaign History</h1>\n  </div>\n  \n      <div class=\"layout\">\n    \n<div class=\"header-with-text box-default\">\n  <section>\n      <header>\n      <h2>History of Refugee Work Rights Campaign</h2>\n    </header>\n          <div class=\"content\">\n        <p>placeholder for campaign history content</p>\n      </div>\n      </section>\n</div>\n  </div>"
-}

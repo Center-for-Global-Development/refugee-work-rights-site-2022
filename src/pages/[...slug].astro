@@ -1,27 +1,52 @@
 ---
-// All regular WP pages, rendered from the scraped live HTML snapshots.
-// The scorecard page has its own route (src/pages/scorecard/).
+// All regular WP pages, from the `pages` content collection (one Markdown file
+// per page in src/content/pages/ — see src/content.config.ts for the two
+// authoring modes). The scorecard page has its own route (src/pages/scorecard/).
+import { getCollection, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 
 export async function getStaticPaths() {
-  const modules = import.meta.glob('../content/pages/*.json', { eager: true });
-  return Object.values(modules)
-    .map((m: any) => m.default ?? m)
-    .filter((page: any) => page.slug !== 'scorecard')
-    .map((page: any) => ({
-      params: { slug: page.path === '/' ? undefined : page.path.replace(/^\/|\/$/g, '') },
-      props: { page },
-    }));
+  const pages = await getCollection('pages', (page) => page.id !== 'scorecard');
+  return pages.map((page) => ({
+    params: { slug: page.data.path === '/' ? undefined : page.data.path.replace(/^\/|\/$/g, '') },
+    props: { page },
+  }));
 }
 
 const { page } = Astro.props;
+const { title, path, blockSupportsCss, prose, heading, boxHeading } = page.data;
+const bodyClass =
+  page.data.bodyClass ??
+  `wp-singular page-template-default page wp-theme-rwrap ${page.id} sidebar-primary elementor-default elementor-kit-431`;
+
+// prose mode: render the Markdown body inside the theme's standard layout box.
+const Content = prose ? (await render(page)).Content : null;
+const hasBody = (page.body ?? '').trim().length > 0;
+const h1 = heading ?? title;
 ---
 
-<Base
-  title={page.title}
-  bodyClass={page.bodyClass}
-  path={page.path}
-  blockSupportsCss={page.blockSupportsCss}
->
-  <Fragment set:html={page.main} />
+<Base title={title} bodyClass={bodyClass} path={path} blockSupportsCss={blockSupportsCss}>
+  {
+    prose ? (
+      <>
+        <div class="page-header">
+          <h1>{h1}</h1>
+        </div>
+        {hasBody && (
+          <div class="layout">
+            <div class="header-with-text box-default">
+              <section>
+                <header>
+                  <h2>{boxHeading ?? h1}</h2>
+                </header>
+                <div class="content">{Content && <Content />}</div>
+              </section>
+            </div>
+          </div>
+        )}
+      </>
+    ) : (
+      <Fragment set:html={page.body} />
+    )
+  }
 </Base>
