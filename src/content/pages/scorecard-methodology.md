@@ -1,0 +1,188 @@
+---
+title: Scorecard Methodology – Refugee Work Rights
+path: /scorecard-methodology/
+bodyClass: wp-singular page-template-default page page-id-225 wp-theme-rwrap scorecard-methodology sidebar-primary elementor-default elementor-kit-431
+blockSupportsCss: |-
+  .wp-container-core-columns-is-layout-8f761849{flex-wrap:nowrap;}
+  /*# sourceURL=core-block-supports-inline-css */
+---
+<div class="page-header">
+  <h1>Scorecard Methodology</h1>
+  </div>
+  
+  
+<div class="wp-block-columns content-container has-white-color has-text-color has-background is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex" style="background-color:#00263f">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="1024" height="683" src="/wp-content/uploads/2022/07/RF1220473_Initiative_ScorecardMethodology-1024x683.jpg" alt="" class="wp-image-907" srcset="/wp-content/uploads/2022/07/RF1220473_Initiative_ScorecardMethodology-1024x683.jpg 1024w, /wp-content/uploads/2022/07/RF1220473_Initiative_ScorecardMethodology-300x200.jpg 300w, /wp-content/uploads/2022/07/RF1220473_Initiative_ScorecardMethodology-768x512.jpg 768w, /wp-content/uploads/2022/07/RF1220473_Initiative_ScorecardMethodology-1536x1025.jpg 1536w, /wp-content/uploads/2022/07/RF1220473_Initiative_ScorecardMethodology.jpg 1920w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center content-container--column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<h2 class="has-large-font-size wp-block-heading"><strong>Research Design</strong></h2>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">The purpose of this research is to understand the challenges refugees face&nbsp;when attempting to access safe and lawful work. Through this research, we provide an understanding of legal frameworks protecting the rights of refugees to work, practical barriers to gainful employment, and opportunities to improve these rights in law and in practice.</p>
+</div>
+</div>
+
+
+
+<div class="wp-block-columns content-container is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:10%"></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-top content-container--column is-layout-flow wp-block-column-is-layout-flow">
+<h2 class="has-text-align-center has-large-font-size wp-block-heading"><strong>Scoring Methodology</strong></h2>
+
+
+
+<p class="has-text-align-center has-medium-font-size wp-block-paragraph">For each country, both de jure and de facto conditions are rated on a scale of green-to-purple as below. The de facto score determines the final score on a scale of green-to-purple for each country.</p>
+
+
+
+<p class="has-text-align-center has-medium-font-size wp-block-paragraph">More information can be found in the report methodology as well as <a href="https://www.cgdev.org/publication/2022-global-refugee-work-rights-report">Annex 3 of the report</a>.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="1079" height="1621" src="/wp-content/uploads/2022/07/De-Jur-and-De-Facto-2.png" alt="" class="wp-image-1117" srcset="/wp-content/uploads/2022/07/De-Jur-and-De-Facto-2.png 1079w, /wp-content/uploads/2022/07/De-Jur-and-De-Facto-2-200x300.png 200w, /wp-content/uploads/2022/07/De-Jur-and-De-Facto-2-682x1024.png 682w, /wp-content/uploads/2022/07/De-Jur-and-De-Facto-2-768x1154.png 768w, /wp-content/uploads/2022/07/De-Jur-and-De-Facto-2-1022x1536.png 1022w" sizes="(max-width: 1079px) 100vw, 1079px"></figure>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:10%"></div>
+</div>
+
+
+
+<div class="wp-block-columns content-container has-white-color has-text-color has-background is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex" style="background-color:#00263f">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:10%"></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center content-container--column is-layout-flow wp-block-column-is-layout-flow">
+<h2 class="has-large-font-size wp-block-heading"><strong>Research Approach</strong></h2>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">In order to track and analyze the current situation of refugee work rights in any given country, we examine different dimensions of work rights both in law (de jure) and in practice (de facto) across 51 countries. These 51 countries were collectively hosting 87 percent of the world’s refugee population at the end of 2021. Combining legal documents, country-level reports, news articles, and input from more than 200 practitioners with knowledge of refugees’ livelihoods and use of services, we evaluate the de jure and de facto situation within a standardized framework.&nbsp;</p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">We use the term “refugees” in this report to refer to all foreign-born people forcibly displaced by persecution or conflict and their descendants who are not citizens. The term includes those who are recognized or unrecognized refugees, asylum seekers, and other forcibly displaced populations, such as “Venezuelans displaced abroad,” in the country. We adopt this definition in order to standardize across countries, since the proportion of refugees, asylum seekers, and individuals in other categories varies significantly, and a comparison of standards for status determination is outside the scope of this report.</p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph"><strong>De Jure Right to Work</strong></p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph"><em>Question: To what extent does the law respect a refugee’s right to work and/or right to self-employment?</em></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Is the country a signatory to the 1951 Refugee Convention and its 1967 Protocol?</li><li>If yes, has this country made a reservation to Articles pertaining to the right to work &amp; self-employment, being 13, 17, 18, 19, 24, or 26 in the Convention?</li><li>Is the country a signatory to the International Covenant on Economic, Social and Cultural Rights?</li><li>If yes, have they made reservations to Articles pertaining to the right to work, being 6, 7, 8, or 9 of the Covenant?</li><li>If a regional refugee law/convention/declaration is relevant, is the country a signatory?</li><li>Is there a national law that protects a refugee’s right to work? If not, is there a relevant policy?</li><li>To what extent does national law or policy conform with relevant regional and international norms?</li><li>Is there discrimination in law or policy between refugee populations?</li></ul>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph"><strong>De Facto Right to Work</strong><strong><br></strong></p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph"><em>Question:</em> <em>To what extent does a refugee have the right to work and to labor protections in practice?</em></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Are refugees able to obtain work permits for formal, wage employment in practice?</li><li>Do formal businesses hire refugees without permits in practice?</li><li>How easily can refugees acquire business permits relative to citizens in practice?</li><li>How free are refugees to operate businesses without permits in practice?</li><li>How free are refugees to travel domestically in practice?</li><li>How free are refugees to choose their place of residence in practice?</li><li>Can refugees access recourse for workplace violations (i.e. if their employers do not pay them) through government institutions?</li></ul>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">A detailed explanation of the methodology and a copy of the survey that was conducted with practitioners is available in <a href="https://www.cgdev.org/publication/2022-global-refugee-work-rights-report">Annex 3 of the Report</a>.</p>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:10%"></div>
+</div>
+
+
+
+<div class="wp-block-columns content-container is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:10%"></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center content-container--column is-layout-flow wp-block-column-is-layout-flow">
+<h2 class="has-large-font-size wp-block-heading"><strong>Data Collection</strong></h2>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph"><strong>Country Selection</strong></p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">Between March and December 2021, we conducted a survey among practitioners with knowledge of refugees’ de facto livelihoods and use of services. We received 260 responses from 83 countries. Given the subjective nature of the questions, we include only countries from which we received at least three responses. 51 countries, with 216 survey responses in total, met this criterion and are therefore included in our research. The responses to our survey on the de facto right to work determined the sample of countries represented here.&nbsp;</p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">These 51 countries accounted for <a href="https://www.unhcr.org/refugee-statistics/download/">87 percent of the global population</a> of refugees, asylum seekers, and Venezuelans displaced abroad in 2021. Our sample includes the top 22 refugee-hosting countries globally and 37 of the top 50. Nevertheless, this set of countries is not fully representative of the global refugee population, as the remaining 13 percent of refugees may face circumstances that differ from those in the countries presented here. We therefore do not make inferences about the remaining populations, nor the refugee population as a whole.</p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph"><strong>De Facto Research</strong></p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">Information on the de facto right to work is gathered primarily through an international survey.&nbsp;</p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">We designed the survey in English and translated it into French and Spanish. It was then circulated to international and local NGOs, refugee-led organizations, NGO networks, and multilateral institutions to reach a variety of people with different perspectives.&nbsp;</p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">The individuals who responded represent a range of experiences in the humanitarian and development sectors. The large and diverse global response, however, still leaves a number of limitations on the ability to directly interpret these data within each country. The people who chose to respond potentially have different opinions than might have emerged from a full survey of the country-based humanitarian sector, and even these practitioners have limited insights into most refugees’ daily experiences.&nbsp;</p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">The questions covered a range of topics relating to refugees’ rights and access to services within their host country. We use a government’s treatment of its citizens as the benchmark in order to isolate the discrimination faced by refugees in particular; for example, we ask how easily refugees can acquire business permits <em>relative to citizens</em>.</p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">Many questions are rated on a 1 to 5 scale, and we accompany the numerical choices with a general definition to standardize across respondents and contexts. For example, the first question is:</p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph"><strong><em>On a scale of 1 to 5, how free are refugees to travel in practice?</em></strong></p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li><em>Refugees cannot leave their neighborhood or camp, and permits to travel are nearly impossible to obtain.</em></li><li><em>(The situation is between 1 and 3.)</em></li><li><em>Refugees travel, but they are regularly harassed and occasionally arrested by authorities when outside their residence. Alternatively, some refugees travel freely, while others have their movements restricted by camp boundaries, checkpoints by authorities, etc.</em></li><li><em>(The situation is between 3 and 5.)</em></li><li><em>Refugees travel freely in practice without interference from the government.</em></li></ol>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">As a starting point, we used the median or most common response to reduce the influence of the highest and lowest scorers on each question. Two staff members then independently reviewed each country’s situation using available secondary sources such as news articles, NGO profiles, and government reports to determine a final score.</p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph"><strong>De Jure Research</strong></p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">Information on the de jure right to work is gathered primarily through desk research of national, regional, and international conventions and includes the following sources:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Government databases at the national, regional, and local level</li><li>Reports from NGOs working directly with refugees</li><li>International and intergovernmental organizations in the humanitarian/refugee issues sector such as UNHCR and IRC</li><li>Online databases such as Refworld</li><li>Reliable News Sources such as BBC and Al Jazeera</li><li>Academic Journals</li></ul>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">Information in the “Country Facts” table was obtained from UNHCR’s 2021 Refugee Statistics. Data is for those classified as refugees, asylum seekers, and Venezuelans displaced abroad as defined by UNHCR.</p>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:10%"></div>
+</div>

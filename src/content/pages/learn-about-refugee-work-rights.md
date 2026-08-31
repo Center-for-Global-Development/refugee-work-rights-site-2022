@@ -1,0 +1,108 @@
+---
+title: About Refugee Work Rights – Refugee Work Rights
+path: /learn-about-refugee-work-rights/
+bodyClass: wp-singular page-template-default page page-id-13 page-parent wp-theme-rwrap learn-about-refugee-work-rights sidebar-primary elementor-default elementor-kit-431
+blockSupportsCss: |-
+  .wp-container-core-columns-is-layout-8f761849{flex-wrap:nowrap;}
+  /*# sourceURL=core-block-supports-inline-css */
+---
+<div class="page-header">
+  <h1>About Refugee Work Rights</h1>
+  </div>
+  
+  
+<div class="wp-block-columns content-container is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="1024" height="683" src="/wp-content/uploads/2022/07/RF1191335_AboutRefWorkRights_Whatdowemeanbyrefworkrights-1024x683.jpg" alt="" class="wp-image-911" srcset="/wp-content/uploads/2022/07/RF1191335_AboutRefWorkRights_Whatdowemeanbyrefworkrights-1024x683.jpg 1024w, /wp-content/uploads/2022/07/RF1191335_AboutRefWorkRights_Whatdowemeanbyrefworkrights-300x200.jpg 300w, /wp-content/uploads/2022/07/RF1191335_AboutRefWorkRights_Whatdowemeanbyrefworkrights-768x512.jpg 768w, /wp-content/uploads/2022/07/RF1191335_AboutRefWorkRights_Whatdowemeanbyrefworkrights-1536x1024.jpg 1536w, /wp-content/uploads/2022/07/RF1191335_AboutRefWorkRights_Whatdowemeanbyrefworkrights.jpg 1920w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Omar, a twenty-four-year-old asylum-seeker from Afghanistan, during a Greek language class at the Greek Language School of the Municipality of Neapolis-Sykeon.&nbsp; </figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center content-container--column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<h2 class="has-large-font-size wp-block-heading"><strong>What do we mean by refugee work rights?</strong></h2>
+
+
+
+<p class="wp-block-paragraph"></p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">Refugees deserve access to a series of rights that allow them to rebuild a life in a new country. These include the right to get a job and a business permit; access to health, education, and financial services; be able to move anywhere; and obtain legal documentation. </p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">These rights are enshrined in the 1951 Refugee Convention relating to the Status of Refugees and its 1967 Protocol, and the International Covenant on Economic, Social and Cultural Rights (ICESCR). These rights have also been included in multiple regional and national laws. Yet many refugees do not<strong> </strong> have these rights in law, and even fewer have these rights in practice. This is the subject of our research.</p>
+
+
+
+<div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
+<div class="wp-block-button btn btn-orange"><a class="wp-block-button__link" href="/scorecard/">View the scorecard</a></div>
+</div>
+</div>
+</div>
+
+
+
+<div class="wp-block-columns content-container has-white-color has-text-color has-background is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex" style="background-color:#00263f">
+<div class="wp-block-column is-vertically-aligned-center content-container--column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<h2 class="has-large-font-size wp-block-heading"><strong>Why Refugee Work Rights Matter</strong></h2>
+
+
+
+<p class="wp-block-paragraph"></p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">Today, there are over 29 million refugees who have fled their home country due to persecution or war. Many spend years, even decades, in exile, whether in camps or cities. As our research shows, many don’t have rights in law or in practice, reducing their ability to be self-sufficient and support their families and their host communities. </p>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">Traditionally, refugee response actors have offered support through the provision of humanitarian aid. While such aid has an essential role to play in protecting the physical security of refugees, it is not enough. A comprehensive response must take into account the long-term development needs of refugees if it is to enable them to rebuild their lives.</p>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="683" src="/wp-content/uploads/2022/07/RF1146488_AboutRefWorkRights_WhyRefWorkRightsMatter-1024x683.jpg" alt="" class="wp-image-910" srcset="/wp-content/uploads/2022/07/RF1146488_AboutRefWorkRights_WhyRefWorkRightsMatter-1024x683.jpg 1024w, /wp-content/uploads/2022/07/RF1146488_AboutRefWorkRights_WhyRefWorkRightsMatter-300x200.jpg 300w, /wp-content/uploads/2022/07/RF1146488_AboutRefWorkRights_WhyRefWorkRightsMatter-768x512.jpg 768w, /wp-content/uploads/2022/07/RF1146488_AboutRefWorkRights_WhyRefWorkRightsMatter-1536x1024.jpg 1536w, /wp-content/uploads/2022/07/RF1146488_AboutRefWorkRights_WhyRefWorkRightsMatter.jpg 1920w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Aya, a 20-year-old Syrian refugee student nurse, is studying for a nursing and health care diploma at Luminus Technical University College in the Jordanian capital, Amman. </figcaption></figure>
+</div>
+</div>
+
+
+
+<div class="wp-block-columns content-container is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="683" src="/wp-content/uploads/2022/07/RF1234233-151A8515-1024x683.jpg" alt="" class="wp-image-1167" srcset="/wp-content/uploads/2022/07/RF1234233-151A8515-1024x683.jpg 1024w, /wp-content/uploads/2022/07/RF1234233-151A8515-300x200.jpg 300w, /wp-content/uploads/2022/07/RF1234233-151A8515-768x512.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Kisesa Casinga, a 26-year-old Burundian refugee, is pursuing construction studies in Goma.</figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center content-container--column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<h2 class="has-large-font-size wp-block-heading"><strong>What Benefits Can Refugees Bring to Host Communities?</strong></h2>
+
+
+
+<p class="has-medium-font-size wp-block-paragraph">Evidence suggests that when refugees are able to fully participate in the economy and society of their host country, they can:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Become self-sufficient and can create jobs.</strong> Refugee entrepreneurs do not stress humanitarian aid or government services, but create jobs as they grow, invest, and expand their businesses.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Fill labor gaps.</strong> Refugees contribute their skills, especially in sectors where there are labor shortages, contributing to a healthy and growing economy.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Create new markets and expand existing ones. </strong>Refugees are consumers, buying from local and foreign markets, thereby stimulating trade.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Pay tax.</strong> Refugees who have jobs are able to pay tax, and stimulate the economy of their host country.</li></ul>
+
+
+
+<div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
+<div class="wp-block-button btn btn-orange"><a class="wp-block-button__link" href="https://www.cgdev.org/publication/economic-and-fiscal-effects-granting-refugees-formal-labor-market-access">Explore the Research</a></div>
+</div>
+</div>
+</div>

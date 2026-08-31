@@ -3,10 +3,10 @@
 // the WP single-scorecard behavior (same page body as /scorecard/; the SPA
 // picks the country up from the URL), while title and body class reproduce
 // what WP emitted for single scorecard posts.
+import { getEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import ScorecardShell from '../../components/ScorecardShell.astro';
-import page from '../../content/pages/scorecard.json';
-import scorecards from '../../data/scorecards.json';
+import { scorecards } from '../../scorecard/data';
 
 export async function getStaticPaths() {
   return scorecards.map((card) => ({
@@ -16,6 +16,7 @@ export async function getStaticPaths() {
 }
 
 const { card } = Astro.props;
+const { data: page } = (await getEntry('pages', 'scorecard'))!;
 const bodyClass = `wp-singular scorecard-template-default single single-scorecard postid-${card.id} wp-theme-rwrap ${card.slug} sidebar-primary elementor-default elementor-kit-431`;
 ---
 

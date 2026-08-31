@@ -9,16 +9,26 @@ Static Astro rebuild of [refugeeworkrights.org](https://refugeeworkrights.org) (
 - **Pagefind** for search (build-time index) inside the original full-screen modal.
 - **Vendored CSS** for pixel parity (`src/styles/`): the theme's built stylesheet (`legacy.css`), WordPress block-library + inline global styles, and the WP Customizer "Additional CSS" (`wp-custom.css`, the current navy/gold branding). Only `overrides.css` is new (Pagefind result styling).
 
-## Data & content (committed snapshots)
+## Data & content (committed, editable)
 
 Everything the build needs is committed — no WordPress, database, or network needed to build:
 
-- `src/content/pages/*.json` — scraped server-rendered `<main>` HTML, body classes, per-page Gutenberg layout CSS.
-- `src/data/scorecards.json` / `keys.json` / `footnotes.json` — snapshots of the WP REST endpoints the Vue app used.
-- `src/data/world-map.json` — the 178 country SVG paths from `rwrap.world.js`, with precomputed bboxes.
+- `src/content/pages/*.md` — one file per site page (an Astro content collection, schema in `src/content.config.ts`): YAML frontmatter (`title`, `path`, WP `bodyClass`, per-page Gutenberg layout CSS) plus the page body.
+- `src/data/scorecards/*.yaml` — one file per country for the scorecard app (filename = URL slug): scores under `levels:`, the Description tab HTML under `content:`, the Data tab HTML under `survey_data:`.
+- `src/data/keys.yaml` / `footnotes.yaml` — the scorecard legend/tooltip texts and tab footnotes.
+- `src/data/world-map.json` — the 178 country SVG paths from `rwrap.world.js`, with precomputed bboxes. Generated; not hand-edited.
 - `public/wp-content/uploads/` — media at their original URLs (37 PDFs referenced in content 404 on the live site too and are intentionally absent).
 
-To re-extract from the live site / Pantheon dump: `npm run extract` (see `scripts/*.mjs`; dump paths configurable via `RWRAP_THEME` / `RWRAP_DUMP` env vars).
+### Editing content
+
+**Pages** have two authoring modes, per file:
+
+- *Raw HTML* (the default, used by the migrated pages): the Markdown body is the scraped WordPress `<main>` markup, emitted verbatim for pixel parity. Edit the HTML in place.
+- *Markdown* (`prose: true` in frontmatter, used by the placeholder pages — `press.md`, `our-supporters.md`, `take-action.md`, `campaign-history.md`): the body is real Markdown, rendered inside the theme's standard page-header + content-box layout. `heading:` sets the `<h1>`, optional `boxHeading:` sets the box's `<h2>`; an empty body renders just the page header. New pages should use this mode — frontmatter `bodyClass` can be omitted (a sensible default is derived from the filename).
+
+**Scorecard countries**: to rescore a country, edit the three quoted `levels:` values (`"0"`–`"5"`, drives the map color, chips, and tooltips) in its file under `src/data/scorecards/`. To add a country, add a new `.yaml` file (list order is alphabetical by filename) — its deep link page, list entry, and map coloring all follow automatically. To update a chart, drop the image under `public/wp-content/uploads/` and point the `<img>` in `survey_data:` at it. Malformed files fail `astro build` with a message naming the file and field.
+
+The one-time extraction scripts (`npm run extract`, `scripts/*.mjs`) predate this structure and still emit the original JSON snapshots; the committed files are now the source of truth, so don't re-run extraction without porting the scripts' output format.
 
 ## Commands
 
