@@ -28,8 +28,6 @@ const { title, bodyClass, path, blockSupportsCss } = Astro.props;
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    {/* The live site is set to discourage search engines; kept as-is. Remove for launch if indexing is wanted. */}
-    <meta name="robots" content="noindex, nofollow" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700" media="all" />
     <link rel="canonical" href={new URL(path, Astro.site).href} />
     <link rel="icon" href="/wp-content/uploads/2022/07/cropped-Fav-WR-1-32x32.png" sizes="32x32" />

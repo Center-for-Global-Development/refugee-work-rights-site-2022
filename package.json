@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.2.0",
+    "@astrojs/sitemap": "^3.7.4",
     "@floating-ui/react-dom": "^2.1.2",
     "astro": "^5.7.0",
     "react": "^19.0.0",
