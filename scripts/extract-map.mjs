@@ -4,9 +4,10 @@
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import pathBounds from 'svg-path-bounds';
 
+// Theme from the Pantheon code backup — see the extraction note in copy-media.mjs.
 const SRC =
   process.env.RWRAP_THEME ||
-  '/private/tmp/claude-501/-Users-jeremygaines-Code-refugee-work-rights-rebuild/11763c7e-4ebd-4fc2-a3c0-afad8aea9b1e/scratchpad/code/refugee-work-rights-action-platform_live_2026-08-13T22-00-00_UTC_code/wp-content/themes/rwrap';
+  `${process.env.RWRAP_DUMP || '/Users/jeremygaines/Code/refugee-work-rights-rebuild/pantheon-dump'}/code/refugee-work-rights-action-platform_live_2026-08-13T22-00-00_UTC_code/wp-content/themes/rwrap`;
 
 const js = readFileSync(`${SRC}/assets/scripts/rwrap.world.js`, 'utf8');
 const start = js.indexOf('{', js.indexOf("'addMap', 'rwrap'"));

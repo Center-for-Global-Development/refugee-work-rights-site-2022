@@ -1,60 +1,66 @@
-# Refugee Work Rights — Static Rebuild
+# Refugee Work Rights
 
-Static Astro rebuild of [refugeeworkrights.org](https://refugeeworkrights.org) (formerly WordPress on Pantheon), with the interactive Scorecard rebuilt as a React island. Built as an exact visual copy of the live site — verified byte-identical screenshots on the content pages at desktop and mobile widths.
+Source for [www.refugeeworkrights.org](https://www.refugeeworkrights.org): a static Astro site with the interactive Scorecard as a React island, deployed to Cloudflare Workers on every push to `main`.
 
 ## Stack
 
 - **Astro 5** (static output, trailing slashes, directory format) — 75 pages: 16 content pages, `/scorecard/` + 58 pre-rendered country deep links, 404.
-- **React 19 island** (`src/scorecard/`) for the scorecard SPA: world map (inline SVG from the theme's pre-projected JQVMap path set — no jQuery/jqvmap/d3), list view, country card overlay, keys legend, tooltips via Floating UI. Client-side pushState routing preserves the original Vue app's URL semantics, including its quirks (map click and card close drop `?viewAs=list`; list click and ESC preserve it).
-- **Pagefind** for search (build-time index) inside the original full-screen modal.
-- **Vendored CSS** for pixel parity (`src/styles/`): the theme's built stylesheet (`legacy.css`), WordPress block-library + inline global styles, and the WP Customizer "Additional CSS" (`wp-custom.css`, the current navy/gold branding). Only `overrides.css` is new (Pagefind result styling).
+- **React 19 island** (`src/scorecard/`) for the scorecard: world map (inline SVG, no jQuery/d3), list view, country card overlay, keys legend, tooltips via Floating UI. Client-side pushState routing keeps the URLs shareable (`/scorecard/<country>/`, `?viewAs=list`).
+- **Pagefind** for search (build-time index), shown in the full-screen search modal. Scorecard country content is client-rendered and so isn't in the index.
+- **CSS** in `src/styles/`: the original theme stylesheet (`legacy.css`), WordPress block-library and global styles, and the navy/gold branding (`wp-custom.css`). Site-specific additions go in `overrides.css`.
+- **SEO**: canonical URLs and `@astrojs/sitemap` use `https://www.refugeeworkrights.org` (the `site` in `astro.config.mjs`); `public/robots.txt` allows indexing and points at the sitemap index.
+- **Analytics**: Google tag `GT-PJN8PSGF`, in `src/layouts/Base.astro`.
 
-## Data & content (committed, editable)
+## Content
 
-Everything the build needs is committed — no WordPress, database, or network needed to build:
+Everything the build needs is committed — no database or network access required.
 
-- `src/content/pages/*.md` — one file per site page (an Astro content collection, schema in `src/content.config.ts`): YAML frontmatter (`title`, `path`, WP `bodyClass`, per-page Gutenberg layout CSS) plus the page body.
-- `src/data/scorecards/*.yaml` — one file per country for the scorecard app (filename = URL slug): scores under `levels:`, the Description tab HTML under `content:`, the Data tab HTML under `survey_data:`.
-- `src/data/keys.yaml` / `footnotes.yaml` — the scorecard legend/tooltip texts and tab footnotes.
-- `src/data/world-map.json` — the 178 country SVG paths from `rwrap.world.js`, with precomputed bboxes. Generated; not hand-edited.
-- `public/wp-content/uploads/` — media at their original URLs (37 PDFs referenced in content 404 on the live site too and are intentionally absent).
+- `src/content/pages/*.md` — one file per page (content collection, schema in `src/content.config.ts`): frontmatter (`title`, `path`, optional `bodyClass` and per-page layout CSS) plus the body.
+- `src/data/scorecards/*.yaml` — one file per country (filename = URL slug): scores under `levels:`, the Description tab HTML under `content:`, the Data tab HTML under `survey_data:`.
+- `src/data/keys.yaml` / `footnotes.yaml` — scorecard legend/tooltip texts and tab footnotes.
+- `src/data/world-map.json` — the 178 country SVG paths with precomputed bboxes. Generated; don't hand-edit.
+- `public/wp-content/uploads/` — media, at the same URLs as on the old WordPress site.
 
-### Editing content
+### Editing pages
 
-**Pages** have two authoring modes, per file:
+Each page file uses one of two modes:
 
-- *Raw HTML* (the default, used by the migrated pages): the Markdown body is the scraped WordPress `<main>` markup, emitted verbatim for pixel parity. Edit the HTML in place.
-- *Markdown* (`prose: true` in frontmatter, used by the placeholder pages — `press.md`, `our-supporters.md`, `take-action.md`, `campaign-history.md`): the body is real Markdown, rendered inside the theme's standard page-header + content-box layout. `heading:` sets the `<h1>`, optional `boxHeading:` sets the box's `<h2>`; an empty body renders just the page header. New pages should use this mode — frontmatter `bodyClass` can be omitted (a sensible default is derived from the filename).
+- **Markdown** (`prose: true` in frontmatter): the body is real Markdown, rendered inside the standard page-header + content-box layout. `heading:` sets the `<h1>`, optional `boxHeading:` sets the box's `<h2>`; an empty body renders just the page header. `bodyClass` can be omitted (it's derived from the filename). **Use this for new pages.** Examples: `press.md`, `our-supporters.md`, `take-action.md`, `campaign-history.md`.
+- **Raw HTML** (the default; most existing pages): the body is HTML markup emitted verbatim. Edit the HTML in place.
 
-**Scorecard countries**: to rescore a country, edit the three quoted `levels:` values (`"0"`–`"5"`, drives the map color, chips, and tooltips) in its file under `src/data/scorecards/`. To add a country, add a new `.yaml` file (list order is alphabetical by filename) — its deep link page, list entry, and map coloring all follow automatically. To update a chart, drop the image under `public/wp-content/uploads/` and point the `<img>` in `survey_data:` at it. Malformed files fail `astro build` with a message naming the file and field.
+### Editing the scorecard
 
-The one-time extraction scripts (`npm run extract`, `scripts/*.mjs`) predate this structure and still emit the original JSON snapshots; the committed files are now the source of truth, so don't re-run extraction without porting the scripts' output format.
+- **Rescore a country**: edit the three quoted `levels:` values (`"0"`–`"5"`) in its file under `src/data/scorecards/`. These drive the map color, chips, and tooltips.
+- **Add a country**: add a new `.yaml` file. Its deep-link page, list entry (alphabetical by filename), and map coloring follow automatically.
+- **Update a chart**: put the image under `public/wp-content/uploads/` and point the `<img>` in `survey_data:` at it.
+
+Malformed files fail `astro build` with a message naming the file and field.
 
 ## Commands
 
 ```sh
 npm install
+npm run dev       # dev server
 npm run build     # astro build + pagefind index → dist/
 npm run preview   # serve dist/ locally
-node scripts/parity.mjs   # screenshot-diff every route against the live site
+npm run deploy    # manual deploy (after `npx wrangler login`); normally CI does this
 ```
 
-## Deploying (Cloudflare Workers, git-connected)
+## Deployment
 
-The repo is self-contained — all content/data/media are committed snapshots, so Cloudflare builds everything from a clean checkout with no local step.
+Cloudflare Workers Builds is connected to this repo: every push to `main` deploys to production, and PRs get preview URLs. `wrangler.jsonc` declares `build.command: "npm run build"`, so `wrangler deploy` builds and indexes the site itself before uploading `dist/`.
 
-**One-time setup** in the Cloudflare dashboard: Workers & Pages → Create → Workers → *Import a repository* → select this repo. Cloudflare reads `wrangler.jsonc`; leave the deploy command as `npx wrangler deploy`. Because `wrangler.jsonc` declares `build.command: "npm run build"`, wrangler itself runs the Astro build + Pagefind indexing before uploading `dist/` — no separate build command needed. Every push to `main` then deploys automatically (and PRs get preview URLs).
+The Worker (`refugee-work-rights-site-2022`) is static assets only, with no script. `html_handling: auto-trailing-slash` matches Astro's directory URLs (`/about` → `/about/`), unknown routes serve `404.html`, and `public/_headers` sets cache lifetimes. A Cloudflare redirect rule sends the bare `refugeeworkrights.org` to `www`. All internal links are root-relative, so preview URLs work unchanged.
 
-`wrangler.jsonc` defines a script-less static-assets Worker: `dist/` is uploaded as-is, `html_handling: auto-trailing-slash` matches Astro's directory-format URLs (`/about` → `/about/`), and unknown routes serve Astro's `404.html`. `public/_headers` (copied into `dist/`) sets caching. Manual deploys still work with `npx wrangler login` + `npm run deploy`.
+## History: migration from WordPress
 
-No domain configuration is needed — every internal link is root-relative, so the site works unchanged on the `*.workers.dev` URL and later on the real domain. The only absolute self-references are the per-page `<link rel="canonical">` tags and the gtag linker config, which intentionally point at `refugeeworkrights.org`.
+The site was previously WordPress on Pantheon. In 2026 it was rebuilt as an exact visual copy (screenshot-identical on content pages at desktop and mobile widths) and moved to Cloudflare. It was built from Pantheon backups (code, database, files) taken 2026-08-13. Those `*.tar.gz`/`*.sql.gz` files are gitignored and not part of the repo.
 
-## Deliberate differences from the live site
-
-- Dropped: New Relic, Burst statistics, AIOS right-click blocker, WP emoji loader, speculation-rules, the dead Universal Analytics snippet (`UA-106234503-1`). The live Site Kit gtag (`GT-PJN8PSGF`) **is** carried over.
-- Search: the live site's modal had an empty search area (WP search was gutted); the rebuild restores the search form backed by Pagefind. Country scorecard content is client-rendered and therefore not in the search index (matches the modal-less reality of the old site's JS-rendered content).
-- Invisible bug fixes in the scorecard port: ESC listener leaks, a crash for country codes without map paths, un-dismissable touch tooltips.
-- `<meta name="robots" content="noindex, nofollow">` is preserved because the live site has it (WP "discourage search engines" is on). **Remove it in `src/layouts/Base.astro` if the new site should be indexed.**
-- Map rendering: the SVG is scaled via `viewBox` instead of jqvmap's pixel transforms — identical layout, sub-pixel anti-aliasing differs on map edges.
-- Internal links are normalized to trailing-slash form (WP redirected bare paths like `/dataset`; the static build serves directory URLs, so extraction and the scorecard nav emit `/dataset/` directly).
-- Cloudflare's email obfuscation (`/cdn-cgi/l/email-protection`, `__cf_email__` spans) is decoded back to real `mailto:` links at extraction time — the decoder script doesn't exist on a static host, so the obfuscated markup would have rendered as broken "[email protected]" text.
+- **Extraction**: `npm run extract` (`scripts/extract-*.mjs`, `copy-media.mjs`) scraped the live pages, scorecard data, map paths, and media into JSON snapshots. Those were then restructured into the Markdown/YAML files above, which are now the source of truth. The scripts still emit the old JSON format, so don't re-run them. `scripts/parity.mjs` screenshot-diffed every route against the WordPress site; now that the domain serves this build, it only compares the site against itself. `scripts/missing-media.txt` lists 37 PDFs that content links to but that already 404ed on the old site; they're intentionally absent.
+- **Scorecard**: ported from the original Vue/jqvmap app, keeping its URL behavior, including quirks (map click and card close drop `?viewAs=list`; list click and ESC keep it). It fixes some bugs: ESC listener leaks, a crash for country codes without map paths, and touch tooltips that couldn't be dismissed. The map now scales via `viewBox` instead of jqvmap's pixel transforms: same layout, slightly different anti-aliasing on edges.
+- **Dropped**: New Relic, Burst statistics, AIOS right-click blocker, WP emoji loader, speculation-rules, and the dead Universal Analytics snippet (`UA-106234503-1`). The Site Kit Google tag was kept.
+- **Other changes**:
+  - Search, which WordPress had gutted, now works via Pagefind.
+  - Internal links use trailing slashes (WordPress used to redirect bare paths).
+  - Cloudflare email-obfuscation markup was decoded back to real `mailto:` links.
+  - The WordPress `noindex, nofollow` meta was removed at launch, and the sitemap and robots.txt were added.

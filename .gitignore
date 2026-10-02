@@ -4,5 +4,6 @@ dist/
 .playwright-mcp/
 *.tar.gz
 *.sql.gz
+pantheon-dump/
 .claude/settings.local.json
 .DS_Store

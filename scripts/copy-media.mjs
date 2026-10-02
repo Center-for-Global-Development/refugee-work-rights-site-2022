@@ -5,9 +5,11 @@ import { readFileSync, readdirSync, mkdirSync, copyFileSync, existsSync, writeFi
 import { dirname, join } from 'node:path';
 import { collectUploadPaths } from './lib.mjs';
 
+// Pantheon backups extracted under pantheon-dump/ (gitignored):
+//   mkdir -p pantheon-dump/code pantheon-dump/files
+//   tar xzf *_code.tar.gz -C pantheon-dump/code && tar xzf *_files.tar.gz -C pantheon-dump/files
 const DUMP =
-  process.env.RWRAP_DUMP ||
-  '/private/tmp/claude-501/-Users-jeremygaines-Code-refugee-work-rights-rebuild/11763c7e-4ebd-4fc2-a3c0-afad8aea9b1e/scratchpad';
+  process.env.RWRAP_DUMP || '/Users/jeremygaines/Code/refugee-work-rights-rebuild/pantheon-dump';
 const FILES = `${DUMP}/files/files_live`;
 const CODE = `${DUMP}/code/refugee-work-rights-action-platform_live_2026-08-13T22-00-00_UTC_code`;
 const THEME_DIST = `${CODE}/wp-content/themes/rwrap/dist`;
